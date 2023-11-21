@@ -1,7 +1,18 @@
-# Vue 3 + Vite
+Steps to reproduce the error:
+Execute the following commands:
+```
+nvm use
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+npm ci
 
-## Recommended IDE Setup
+npm run build
+```
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+It should show several errors like to following one:
+```
+"/*@__PURE__*/"
+
+in "node_modules/@stencil/core/internal/client/index.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+```
+
+[Here](https://github.com/intlify/vue-i18n-next/issues/1599) you can find a detailed explanation of why the error occurs and how to fix it.
